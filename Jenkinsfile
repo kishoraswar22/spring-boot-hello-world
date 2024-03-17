@@ -22,6 +22,12 @@ pipeline {
                 sh 'mvn  package'
         }
     }
+
+    stage(' Test') {
+            steps {
+                sh 'mvn  test'
+        }
+    }
     stage(' Sonar Analysis') {
             steps {
                  withSonarQubeEnv('sonar') {
@@ -32,5 +38,21 @@ pipeline {
                  }
             }
        }
+
+    stage(' Dev Deployment') {
+            steps {
+                  echo "dev deployment"
+        }
+    }
+    stage(' UAT Deployment') {
+            steps {
+                sh 'uat deployment'
+        }
+    }
+    stage(' PROD Deployment') {
+            steps {
+                sh 'Prod deployment'
+        }
+    }
     }
 }
