@@ -44,14 +44,14 @@ pipeline {
                   echo "dev deployment"
         }
     }
-    stage(' UAT Deployment') {
+    stage('UAT Deployment') {
             steps {
-                sh 'uat deployment'
+                echo 'uat deployment'
         }
     }
     stage(' PROD Deployment') {
             steps {
-                sh 'Prod deployment'
+                echo 'Prod deployment'
         }
     }
     }
