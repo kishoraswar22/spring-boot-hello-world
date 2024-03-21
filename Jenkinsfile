@@ -9,12 +9,12 @@ pipeline {
     stages {
         stage('Code Checkout') {
             steps {
-                           
+                  git branch: 'main', changelog: false, poll: false, url: 'https://github.com/kishoraswar22/spring-boot-hello-world.git'         
             }
         }
     stage('Build') {
             steps {
-                echo 'Hello World'
+                sh 'mvn package'
             }
         }
     stage('Test') {
@@ -25,7 +25,7 @@ pipeline {
 
      stage('Deploy To Dev') {
             steps {
-                echo 'Hello World'
+                deploy adapters: [tomcat9(credentialsId: 'tomcat_user', path: '', url: 'http://13.233.193.236:8080/')], contextPath: null, onFailure: false, war: '**/*.war'
             }
         }
 
