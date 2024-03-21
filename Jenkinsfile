@@ -1,10 +1,15 @@
 pipeline {
     agent any
 
+    tools{
+
+        maven 'maven'
+    }
+
     stages {
         stage('Code Checkout') {
             steps {
-                echo 'Hello World'
+                           
             }
         }
     stage('Build') {
